@@ -8,7 +8,6 @@ Career Guide is a web application designed to help students find the best career
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Project Structure
 
