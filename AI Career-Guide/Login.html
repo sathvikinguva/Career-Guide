@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('background.jpg') no-repeat center center/cover;
+            margin: 0;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0);
+            padding: 5px 10px;
+            text-align: right;
+        }
+
+        .navbar a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1.2em;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: #6466ea;
+            border-radius: 5px;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .google-login {
+            background-color: #db4437;
+        }
+
+        .google-login:hover {
+            background-color: #b03024;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="Homepage.html">Home</a>    
+        <a href="About.html">About</a>
+        <a href="Login.html">Login</a>
+        <a href="CareerOptions.html ">Services</a>
+        
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <p id="error-message" class="error"></p>
+        <input type="text" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="validateLogin()">Login</button>
+        <button class="google-login">Sign in with Google</button>
+    </div>
+
+    <script>
+        function validateLogin() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let errorMessage = document.getElementById("error-message");
+
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (email === "" || password === "") {
+                errorMessage.textContent = "Both fields are required.";
+                return false;
+            } else if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email.";
+                return false;
+            } else if (password.length < 6) {
+                errorMessage.textContent = "Password must be at least 6 characters long.";
+                return false;
+            } else {
+                errorMessage.textContent = "";
+                location.href = "CareerOptions.html"; 
+            }
+        }
+    </script>
+</body>
+</html>

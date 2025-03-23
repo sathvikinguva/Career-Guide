@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs - Career Guidance</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding-top: 60px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0);
+            padding: 5px 10px;
+            text-align: right;
+        }
+
+        .navbar a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1.2em;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: #6466ea;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .upload-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #6466ea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #jobList {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="Homepage.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Login.html">Login</a>
+        <a href="CareerOptions.html ">Services</a>
+    </div>
+
+    <div class="container mt-5">
+        <h2>Job Listings</h2>
+        <input type="text" id="jobSearch" class="form-control mb-3" placeholder="Search jobs...">
+        <ul class="list-group" id="jobList">
+            <li class="list-group-item">Software Engineer - Google</li>
+            <li class="list-group-item">Data Analyst - Microsoft</li>
+            <li class="list-group-item">Marketing Manager - Amazon</li>
+        </ul>
+    </div>
+
+    <div class="container upload-container">
+        <h2>Upload Your Resume</h2>
+        <input type="file" id="fileInput">
+        <button onclick="uploadFile()">Upload & Analyze</button>
+        <p id="file-name"></p>
+        <h3>Recommended Jobs</h3>
+        <ul class="list-group" id="recommendedJobs"></ul>
+    </div>
+
+<script>
+    async function uploadFile() {
+        let fileInput = document.getElementById("fileInput");
+        let file = fileInput.files[0];
+
+        if (!file) {
+            document.getElementById("file-name").innerText = "Please select a file to upload.";
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            let response = await fetch("http://localhost:5000/api/upload_resume", { // Ensure the URL is correct
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) {
+                let errorText = await response.text();
+                console.error("Error response from server:", errorText);
+                throw new Error("Failed to upload file");
+            }
+
+            let data = await response.json();
+            document.getElementById("file-name").innerText = "File Uploaded: " + file.name;
+            let jobList = document.getElementById("recommendedJobs");
+            jobList.innerHTML = data.response.split('\n').map(job => `<li class="list-group-item">${job}</li>`).join("");
+        } catch (error) {
+            console.error("Error uploading file:", error);
+            document.getElementById("file-name").innerText = "An error occurred while uploading the file. Please try again.";
+        }
+    }
+</script>
+
+</body>
+</html>

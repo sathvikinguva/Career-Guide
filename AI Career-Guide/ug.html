@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UG Course Recommendations</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1E3C72, #2A5298);
+            text-align: center;
+            margin: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0);
+            padding: 5px 10px;
+            text-align: right;
+        }
+
+        .navbar a {
+            color: rgb(243, 243, 243);
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1.2em;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: #6466ea;
+            border-radius: 5px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            transition: 0.3s;
+            color: white;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            background: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #FFA500;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #FF8C00;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: 400;
+            font-size: 1.1em;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            text-align: left;
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="#">Home</a>    
+        <a href="About.html">About</a>
+        <a href="Login.html">Login</a>
+        <a href="CareerOptions.html">Services</a>
+    </div>
+
+    <div class="container">
+        <h2>Select Your Interests</h2>
+        <select id="interest">
+            <option value="Computer Science">Computer Science</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Business">Business</option>
+            <option value="Medicine">Medicine</option>
+            <option value="Arts">Arts</option>
+        </select>
+        <button onclick="getRecommendations()">Get Recommendations</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function getRecommendations() {
+            const interest = document.getElementById("interest").value;
+            const recommendations = {
+                "Computer Science": `
+                    <ul>
+                        <li><b>MIT (USA)</b> – B.Sc. Computer Science</li>
+                        <li><b>Stanford University (USA)</b> – B.Tech AI & Data Science</li>
+                        <li><b>IIT Bombay (India)</b> – BCA Cyber Security</li>
+                    </ul>
+                `,
+                "Engineering": `
+                    <ul>
+                        <li><b>Harvard University (USA)</b> – B.Tech Mechanical</li>
+                        <li><b>ETH Zurich (Switzerland)</b> – B.Tech Robotics</li>
+                        <li><b>IIT Delhi (India)</b> – B.Tech Civil</li>
+                    </ul>
+                `,
+                "Business": `
+                    <ul>
+                        <li><b>London Business School (UK)</b> – BBA International Business</li>
+                        <li><b>Wharton School (USA)</b> – B.Com Finance</li>
+                        <li><b>IIM Bangalore (India)</b> – BMS Marketing</li>
+                    </ul>
+                `,
+                "Medicine": `
+                    <ul>
+                        <li><b>Johns Hopkins University (USA)</b> – MBBS Medicine</li>
+                        <li><b>AIIMS Delhi (India)</b> – BDS Dental Surgery</li>
+                        <li><b>University of Toronto (Canada)</b> – B.Sc. Nursing</li>
+                    </ul>
+                `,
+                "Arts": `
+                    <ul>
+                        <li><b>University of Oxford (UK)</b> – B.A. Literature</li>
+                        <li><b>Yale University (USA)</b> – B.A. Fine Arts</li>
+                        <li><b>JNU Delhi (India)</b> – B.A. Psychology</li>
+                    </ul>
+                `
+            };
+            
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = recommendations[interest];
+            resultElement.classList.add("fade-in");
+        }
+    </script>
+
+</body>
+</html>

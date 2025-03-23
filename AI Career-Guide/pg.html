@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG Course Recommendations</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1E3C72, #2A5298);
+            text-align: center;
+            margin: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0);
+            padding: 5px 10px;
+            text-align: right;
+        }
+
+        .navbar a {
+            color: rgb(243, 243, 243);
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1.2em;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: #6466ea;
+            border-radius: 5px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            transition: 0.3s;
+            color: white;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            background: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #FFA500;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #FF8C00;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: 400;
+            font-size: 1.1em;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            text-align: left;
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="Homepage.html">Home</a>    
+        <a href="About.html">About</a>
+        <a href="Login.html">Login</a>
+        <a href="CareerOptions.html">Services</a>
+    </div>
+
+    <div class="container">
+        <h2>Select Your Field</h2>
+        <select id="field">
+            <option value="Data Science">Data Science</option>
+            <option value="MBA">MBA</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+            <option value="Medical Sciences">Medical Sciences</option>
+            <option value="Economics">Economics</option>
+        </select>
+        <button onclick="getPGRecommendations()">Get PG Courses</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function getPGRecommendations() {
+            const field = document.getElementById("field").value;
+            const recommendations = {
+                "Data Science": `
+                    <ul>
+                        <li><b>Harvard University</b> – M.Sc. Data Science</li>
+                        <li><b>Stanford University</b> – M.Tech AI & ML</li>
+                        <li><b>MIT</b> – PG Diploma in Big Data Analytics</li>
+                    </ul>
+                `,
+                "MBA": `
+                    <ul>
+                        <li><b>Harvard Business School</b> – MBA in Finance</li>
+                        <li><b>Wharton School</b> – MBA in Marketing</li>
+                        <li><b>London Business School</b> – MBA in International Business</li>
+                    </ul>
+                `,
+                "Artificial Intelligence": `
+                    <ul>
+                        <li><b>Oxford University</b> – M.Tech in AI</li>
+                        <li><b>Carnegie Mellon University</b> – M.Sc. in Machine Learning</li>
+                        <li><b>University of Toronto</b> – PG Diploma in AI</li>
+                    </ul>
+                `,
+                "Medical Sciences": `
+                    <ul>
+                        <li><b>Johns Hopkins University</b> – MD in Internal Medicine</li>
+                        <li><b>AIIMS Delhi</b> – MS in Surgery</li>
+                        <li><b>University of Melbourne</b> – M.Sc. in Pharmacology</li>
+                    </ul>
+                `,
+                "Economics": `
+                    <ul>
+                        <li><b>Yale University</b> – M.A. in Economics</li>
+                        <li><b>London School of Economics</b> – M.Sc. in Applied Economics</li>
+                        <li><b>University of Chicago</b> – PG Diploma in Economic Policy</li>
+                    </ul>
+                `
+            };
+            
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = recommendations[field];
+            resultElement.classList.add("fade-in");
+        }
+    </script>
+
+</body>
+</html>

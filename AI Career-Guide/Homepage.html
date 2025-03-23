@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background: url('image.jpg') no-repeat center center/cover;
+            margin: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0);
+            padding: 5px 10px;
+            text-align: right;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 1.2em;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background: #6466ea;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-top: 80px;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #6466ea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="Homepage.html">Home</a>    
+        <a href="About.html">About</a>
+        <a href="Login.html">Login</a>
+        <a href="CareerOptions.html ">Services</a>
+        
+    </div>
+
+    <h1>Guide your career with us</h1>
+    <div class="button-container">
+        <button onclick="location.href='Login.html'">Start Journey</button>
+    </div>
+</body>
+</html>
