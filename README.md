@@ -53,6 +53,13 @@ __pycache__/
     ```
 2. Open your web browser and navigate to `http://localhost:5000`.
 
+### Navigating the Application
+
+- **Home Page**: Provides an overview of the application and its features.
+- **About Page**: Learn more about the mission and the team behind Career Guide.
+- **Login Page**: Access your personalized career recommendations by logging in.
+- **Services Page**: Explore the various career options and services offered.
+
 ## Contributing
 
 We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.
